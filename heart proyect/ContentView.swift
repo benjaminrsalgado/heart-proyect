@@ -20,8 +20,13 @@ struct LikeButtonView: View{
     @Binding var likeCount: Int
     var body: some View{
         Button(action:{
-            heartColor.toggle()
-            likeCount += 1
+            if heartColor == false {
+                heartColor = true
+                likeCount += 1
+            } else {
+                heartColor = false
+                likeCount -= 1
+            }
         }){ Image(systemName: "heart.fill")
             .foregroundColor(heartColor ? .red: .black)
             Text("Likes: \(likeCount)")
