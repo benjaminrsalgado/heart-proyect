@@ -8,17 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var heartColor: Bool = false
+    @State private var likeCount = 0
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        LikeButtonView(heartColor: $heartColor, likeCount: $likeCount)
     }
 }
 
+struct LikeButtonView: View{
+    @Binding var heartColor: Bool
+    @Binding var likeCount: Int
+    var body: some View{
+        Button(action:{
+            heartColor.toggle()
+            likeCount += 1
+        }){ Image(systemName: "heart.fill")
+            .foregroundColor(heartColor ? .red: .black)
+            Text("Likes: \(likeCount)")
+                .font(.headline)
+                .foregroundColor(.red)
+        }
+    }
+}
 #Preview {
     ContentView()
 }
