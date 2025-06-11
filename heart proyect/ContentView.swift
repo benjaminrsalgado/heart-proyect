@@ -28,10 +28,10 @@ struct LikeButtonView: View{
                 likeCount -= 1
             }
         }){ Image(systemName: "heart.fill")
-            .foregroundColor(heartColor ? .red: .black)
+            .foregroundColor(heartColor ? .red: .gray)
             Text("Likes: \(likeCount)")
                 .font(.headline)
-                .foregroundColor(.red)
+                .foregroundColor(.blue)
         }
     }
 }
